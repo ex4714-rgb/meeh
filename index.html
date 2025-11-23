@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moutons Carrés</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'VT323', monospace;
+        overscroll-behavior: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      /* Pixel Art Shadows for Depth */
+      .pixel-shadow {
+        box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.2);
+      }
+      
+      /* Custom Animations */
+      
+      /* GRAND SAUT TRAVERSANT (Droite vers Gauche - Gravité Lunaire) */
+      @keyframes jump-across {
+        0% { transform: translateX(55vw) translateY(0) rotate(5deg); opacity: 1; }
+        45% { transform: translateX(0px) translateY(-35vh) rotate(0deg) scale(1.1); } /* Sommet très haut et lent */
+        55% { transform: translateX(0px) translateY(-35vh) rotate(0deg) scale(1.1); } /* Petit flottement au sommet */
+        100% { transform: translateX(-55vw) translateY(10px) rotate(-5deg); opacity: 1; }
+      }
+      
+      .animate-sheep-jump {
+        /* Durée augmentée à 2s pour effet low gravity */
+        animation: jump-across 2s ease-in-out forwards;
+      }
+
+      /* Flotter sur place (Attente à DROITE - Hors écran ou bord) */
+      @keyframes float-idle {
+        0%, 100% { transform: translateY(0) translateX(35vw); }
+        50% { transform: translateY(-8px) translateX(35vw); }
+      }
+      .animate-float {
+        animation: float-idle 3s ease-in-out infinite;
+      }
+      
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      .animate-twinkle {
+        animation: twinkle 3s infinite ease-in-out;
+      }
+
+      @keyframes float-up {
+        0% { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-60px) scale(1.2); }
+      }
+      .animate-float-up {
+        animation: float-up 1.5s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
