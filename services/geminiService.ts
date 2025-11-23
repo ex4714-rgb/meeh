@@ -1,6 +1,10 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { STORIES_PROMPT } from "../constants";
 import { StoryResponse } from "../types";
+
+// Fix for TypeScript finding process undefined in client context
+declare const process: any;
 
 const apiKey = process.env.API_KEY;
 

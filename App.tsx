@@ -73,7 +73,7 @@ const App: React.FC = () => {
     lfo.stop(t + 0.8);
   };
 
-  const handleScreenClick = useCallback((e: React.MouseEvent) => {
+  const handleScreenClick = useCallback(() => {
     initAudio();
     
     if (isJumping) return;
